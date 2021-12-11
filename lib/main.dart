@@ -8,7 +8,7 @@ import 'screens/home.dart';
 void main() {
   runApp(
     ChangeNotifierProvider(
-      create: (context) => ItemsNotifier(),
+      create: (_) => ItemsNotifier(),
       child: const MyApp(),
     ),
   );
