@@ -20,8 +20,8 @@ class _TodoItemState extends State<TodoItem> {
 
   @override
   void dispose() {
-    super.dispose();
     taskNameInputController.dispose();
+    super.dispose();
   }
 
   @override
@@ -75,7 +75,7 @@ class _TodoItemState extends State<TodoItem> {
           child: Wrap(
             children: [
               TextFormField(
-                key: const ValueKey('ModalTitle'),
+                key: const ValueKey('ModalChangeInput'),
                 controller: taskNameInputController,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),

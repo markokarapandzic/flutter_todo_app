@@ -24,6 +24,7 @@ class _RemovedItemState extends State<RemovedItem> {
           tileColor: Colors.blue[400],
           title: Text(widget.item.name),
           trailing: InkWell(
+            key: const ValueKey('RestoreBtn'),
             onTap: () => restoreItem(context),
             child: Ink(
               padding: const EdgeInsets.all(12.0),
