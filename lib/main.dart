@@ -8,7 +8,7 @@ import 'screens/home.dart';
 void main() {
   runApp(
     ChangeNotifierProvider(
-      create: (context) => ItemsNotifier(),
+      create: (_) => ItemsNotifier(),
       child: const MyApp(),
     ),
   );
@@ -37,6 +37,7 @@ class MyHome extends StatelessWidget {
         title: const Text('Todo App'),
         actions: [
           IconButton(
+            key: const ValueKey('GoToDeletedItemsBtn'),
             onPressed: () {
               Navigator.push(
                 context,

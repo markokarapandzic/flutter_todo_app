@@ -20,8 +20,8 @@ class _TodoItemState extends State<TodoItem> {
 
   @override
   void dispose() {
-    super.dispose();
     taskNameInputController.dispose();
+    super.dispose();
   }
 
   @override
@@ -39,12 +39,14 @@ class _TodoItemState extends State<TodoItem> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               TextButton(
+                key: const ValueKey('EditBtn'),
                 child: const Text('EDIT'),
                 onPressed: () =>
                     showEditModal(context, taskNameInputController),
               ),
               const SizedBox(width: 8),
               TextButton(
+                key: const ValueKey('DeleteBtn'),
                 child: const Text('DELETE'),
                 onPressed: () => removeItem(context),
               ),
@@ -73,6 +75,7 @@ class _TodoItemState extends State<TodoItem> {
           child: Wrap(
             children: [
               TextFormField(
+                key: const ValueKey('ModalChangeInput'),
                 controller: taskNameInputController,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
@@ -84,6 +87,7 @@ class _TodoItemState extends State<TodoItem> {
               ),
               Center(
                 child: InkWell(
+                  key: const ValueKey('ChangeModalBtn'),
                   onTap: () => editItem(context, taskNameInputController),
                   child: Ink(
                     padding: const EdgeInsets.all(12.0),

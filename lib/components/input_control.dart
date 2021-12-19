@@ -28,6 +28,7 @@ class _InputControlState extends State<InputControl> {
       children: [
         Expanded(
           child: TextFormField(
+            key: const ValueKey('ItemInput'),
             controller: taskInputController,
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
@@ -39,6 +40,7 @@ class _InputControlState extends State<InputControl> {
           width: 10,
         ),
         InkWell(
+          key: const ValueKey('AddBtn'),
           onTap: () {
             onTaskCreate(context);
           },
