@@ -1,4 +1,4 @@
-import 'package:todo_app_test_project/models/user.dart';
+import 'package:todo_app_test_project/models/profile.dart';
 import 'package:todo_app_test_project/modules/auth/auth_interface.dart';
 
 class AuthManager {
@@ -6,13 +6,13 @@ class AuthManager {
 
   AuthManager({required this.authService});
 
-  User login(email, password) {
-    User result = authService.login(email, password);
+  Future<Profile> login(email, password) async {
+    Profile result = await authService.login(email, password);
     return result;
   }
 
-  User register(User user) {
-    User result = authService.register(user);
+  Future<Profile> register(Profile user) async {
+    Profile result = await authService.register(user);
     return result;
   }
 }

@@ -1,11 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_app_test_project/firebase_options.dart';
 import 'package:todo_app_test_project/state/items_notifier.dart';
 
 import 'screens/deleted.dart';
 import 'screens/home.dart';
 
-void main() {
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(
     ChangeNotifierProvider(
       create: (_) => ItemsNotifier(),

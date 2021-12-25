@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:todo_app_test_project/managers/auth_manager.dart';
-import 'package:todo_app_test_project/models/user.dart';
+import 'package:todo_app_test_project/models/profile.dart';
 import 'package:todo_app_test_project/modules/auth/auth_interface.dart';
 
 import 'auth_test.mocks.dart';
@@ -18,23 +18,23 @@ void main() {
       authManager = AuthManager(authService: mockAuthService);
     });
 
-    test('Should login user', () {
-      User expectedUser = User('test', 'test@gmail.com', 'tes123');
+    test('Should login user', () async {
+      Profile expectedUser = Profile('test', 'test@gmail.com', 'tes123');
 
       when(mockAuthService.login('test@gmail.com', 'test123'))
-          .thenReturn(expectedUser);
+          .thenAnswer((_) async => expectedUser);
 
-      User result = authManager.login('test@gmail.com', 'test123');
+      Profile result = await authManager.login('test@gmail.com', 'test123');
 
       expect(result, expectedUser);
     });
 
-    test('Should register user', () {
-      User newUser = User('NewUser', 'new@gmail.com', 'new123');
+    test('Should register user', () async {
+      Profile newUser = Profile('NewUser', 'new@gmail.com', 'new123');
 
-      when(mockAuthService.register(newUser)).thenReturn(newUser);
+      when(mockAuthService.register(newUser)).thenAnswer((_) async => newUser);
 
-      User registeredUser = authManager.register(newUser);
+      Profile registeredUser = await authManager.register(newUser);
 
       expect(registeredUser, newUser);
     });

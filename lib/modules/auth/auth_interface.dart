@@ -1,6 +1,6 @@
-import 'package:todo_app_test_project/models/user.dart';
+import 'package:todo_app_test_project/models/profile.dart';
 
 abstract class IAuth {
-  User login(String email, String password);
-  User register(User user);
+  Future<Profile> login(String email, String password);
+  Future<Profile> register(Profile user);
 }
