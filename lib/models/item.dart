@@ -1,6 +1,6 @@
 class Item {
   String name;
-  DateTime date;
+  bool isDone;
 
-  Item({required this.name, required this.date});
+  Item({required this.name, this.isDone = false});
 }

@@ -16,6 +16,7 @@ class TodoItem extends StatefulWidget {
 }
 
 class _TodoItemState extends State<TodoItem> {
+  bool checkboxState = false;
   final TextEditingController taskNameInputController = TextEditingController();
 
   @override
@@ -30,28 +31,26 @@ class _TodoItemState extends State<TodoItem> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          ListTile(
-            leading: const Icon(Icons.list),
-            title: Text(widget.item.name),
-            subtitle: Text(widget.item.date.toString()),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              TextButton(
-                key: const ValueKey('EditBtn'),
-                child: const Text('EDIT'),
-                onPressed: () =>
-                    showEditModal(context, taskNameInputController),
+          GestureDetector(
+            onHorizontalDragStart: (DragStartDetails value) {
+              removeItem(context);
+            },
+            onLongPress: () => showEditModal(context, taskNameInputController),
+            child: ListTile(
+              leading: const Icon(Icons.list),
+              title: Text(widget.item.name),
+              trailing: Checkbox(
+                checkColor: Colors.white,
+                value: checkboxState,
+                onChanged: (bool? value) {
+                  if (value != null) {
+                    setState(() {
+                      checkboxState = value;
+                    });
+                  }
+                },
               ),
-              const SizedBox(width: 8),
-              TextButton(
-                key: const ValueKey('DeleteBtn'),
-                child: const Text('DELETE'),
-                onPressed: () => removeItem(context),
-              ),
-              const SizedBox(width: 8),
-            ],
+            ),
           ),
         ],
       ),

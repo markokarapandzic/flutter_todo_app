@@ -73,7 +73,6 @@ class _InputControlState extends State<InputControl> {
 
     Item newItem = Item(
       name: taskInputController.text,
-      date: DateTime.now(),
     );
     itemsNotifier.addItem(newItem);
 
